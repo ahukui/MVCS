@@ -65,7 +65,7 @@ class SSA(nn.Module):
         return out
 
 
-class SADA_attention(nn.Module):
+class SADA_Attention(nn.Module):
     def __init__(self, inchannel, n_segment):
         super(SADA_attention, self).__init__()
         self.LF0 = SSA(inchannel, n_segment)
@@ -107,7 +107,7 @@ class  MVCSBlock(nn.Module):
             nn.GELU(),
             )
 
-        self.Atten = SADA_attention(outchannel, num_heads)
+        self.Atten = SADA_Attention(outchannel, num_heads)
 
         self.conv_1 = nn.Sequential(
             nn.Conv3d(outchannel, outchannel, kernel_size=3, padding=1, bias=False),
